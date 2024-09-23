@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      TF_WORKING_DIR: '.'
+      TF_WORKING_DIR: './terraform'
 
     defaults:
       run:
@@ -46,9 +46,9 @@ jobs:
 
       - name: Terraform Plan
         id: plan
-        run: TF_LOG=DEBUG terraform plan -input=false -no-color -out latest
+        run: TF_LOG=DEBUG terraform plan -out terraform.plan
         continue-on-error: true
 
       - name: Terraform Apply
         id: apply
-        run: terraform apply -auto-approve
+        run: terraform apply terraform.plan
