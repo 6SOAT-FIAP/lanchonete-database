@@ -165,7 +165,7 @@ resource "aws_security_group" "sg-rds" {
     from_port       = 3306
     to_port         = 3306
     protocol        = "tcp"
-    security_groups = [aws_security_group.private_subnet_sg.id]
+    security_groups = [aws_security_group.private_subnet_sg.id, aws_security_group.public_subnet_sg.id]
   }
 
   # Permitir tráfego de saída para qualquer destino
