@@ -87,9 +87,28 @@ resource "aws_route_table" "cluster-route-table" {
   }
 }
 
+# Public route table
+resource "aws_route_table" "lanchonete-api_public_rt" {
+  vpc_id = aws_vpc.cluster-vpc-bb.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.cluster-igw.id
+  }
+
+  tags = {
+    Name = "lanchonete-api_public_rt"
+  }
+}
+
 # Provisionamento Tabela de Roteamento para Subnets Privadas
 resource "aws_route_table" "private_route_1" {
   vpc_id = aws_vpc.cluster-vpc-bb.id
+
+  route {
+    cidr_block     = "0.0.0.0/0"
+    nat_gateway_id = aws_nat_gateway.cluster-nat-gateway.id
+  }
 
   tags = {
     Name = "route-table-private-1"
@@ -98,6 +117,11 @@ resource "aws_route_table" "private_route_1" {
 
 resource "aws_route_table" "private_route_2" {
   vpc_id = aws_vpc.cluster-vpc-bb.id
+
+  route {
+    cidr_block     = "0.0.0.0/0"
+    nat_gateway_id = aws_nat_gateway.cluster-nat-gateway.id
+  }
 
   tags = {
     Name = "route-table-private-2"

@@ -19,7 +19,7 @@ resource "aws_db_instance" "rds-lanchonete" {
   multi_az                     = false
   apply_immediately            = true
   skip_final_snapshot          = true
-  publicly_accessible          = false
+  publicly_accessible          = true
   deletion_protection          = false
   performance_insights_enabled = false
   backup_retention_period      = 1
@@ -29,6 +29,6 @@ resource "aws_db_instance" "rds-lanchonete" {
   backup_window = var.backup_window
 
   tags = {
-    Name = "db-${var.project_name}"
+    Name = "rds-${var.project_name}"
   }
 }
