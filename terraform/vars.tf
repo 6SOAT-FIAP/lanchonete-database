@@ -56,7 +56,7 @@ variable "storage_type" {
 
 variable "min_storage" {
   description = "Armazenamento mínimo para o RDS, em GB. Por exemplo, '20'."
-  default     = "30"
+  default     = "20"
   type        = string
 }
 
