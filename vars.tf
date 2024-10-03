@@ -79,5 +79,5 @@ variable "db_identifier" {
 variable "cluster_sg_id" {
   description = "Security Group ID for the EKS Cluster"
   type        = string
-  default     = "sg-0231ca506299f353a"
+  default     = "sg-08c8fb32efac379f5"
 }
