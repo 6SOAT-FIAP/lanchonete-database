@@ -15,7 +15,7 @@ variable "arn_aws_lab_role" {
 variable "vpc_id" {
   description = "VPC ID - VPC Created in the infrastructure repo"
   type        = string
-  default     = "vpc-0d7cabf723aa2f3d2"
+  default     = "vpc-09dc9133db63e0010"
 }
 
 variable "subnet_database_1_cidr_block" {
